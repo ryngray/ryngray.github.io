@@ -6,7 +6,22 @@
 </h1>
 <!-- <a href="doc/paper.pdf"> <img class="teaser" src="teaser.64e90583.png"> -->
 </a>
-<p>  </p> 
- <h2></h2>
+<p> This website contains information regarding the paper 'Visualizing Evolving Trees'.  Here we present ways to draw dynamic trees, where nodes are allowed to enter, but not leave.  We present two different algorithms, DynaCola (Dynamic Collision) and DynaSafe (Dynamic Safety) that draw these trees without crossings and with good compactness. </p> 
+ <h2> Math Geneology
+ </h2>
+
+<p>This graph, found here: <a href = "https://www.genealogy.math.ndsu.nodak.edu/"></a> shows advisor-advisee relationships in the world of mathematics, stretching back to the middle ages. The dataset includes the thesis titles, students, advisors, dates, and number of descendants. The total number of nodes is around 260,000 and is continuously updated. While this data is not quite a tree (or even connected, or planar), we extract a subset to create a tree with 500 nodes. The maximum node degree of this tree is 5 and the radius is 14. </p>
+
+<img src="math_table.png" alt="Comparison of different methods">
+
+<h2> Tree of Life</h2>
+
+
+This graph, found here: <a href = "http://tolweb.org/tree/"></a>, captures the evolutionary progression of life on Earth.The underlying data is a tree structure with a natural time component. As a new species evolves, a new node in the tree is added. The edges give the parent-child relation of the nodes, where the parent is the original species, and the child is the new species. We use a subset of this graph with 500 nodes. The maximum node degree of this tree is 5, and the radius is 24.
+
+
+<embed src="table_tol.png"/>
+
+
 
 </body></html>

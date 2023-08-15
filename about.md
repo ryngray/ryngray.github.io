@@ -4,15 +4,10 @@ title: About
 permalink: /about/
 ---
 
-This is the base Jekyll theme. You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at [jekyllrb.com](https://jekyllrb.com/)
 
-You can find the source code for Minima at GitHub:
-[jekyll][jekyll-organization] /
-[minima](https://github.com/jekyll/minima)
+Ryn Gray is a current PhD student at the University of Arizona. They received their Bachelor of Sciences in Computer Science and Applied Mathematics from the University of Colorado at Boulder.  Their research interests include visualizations, especially visualizations of large graphs, graph algorithms, machine learning, data science, and knitting.  
 
-You can find the source code for Jekyll at GitHub:
-[jekyll][jekyll-organization] /
-[jekyll](https://github.com/jekyll/jekyll)
+In thier free time, Ryn helps run the Lindy Hop scene in Tucson, takes care of their lizards, and knits fabulous items.
 
+If you are interested in contacting Ryn, please check the relevant tab to get the best way to contact them for each topic.
 
-[jekyll-organization]: https://github.com/jekyll

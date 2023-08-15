@@ -1,0 +1,74 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin><style>body{margin-bottom:5em}h1,h2{margin-top:1em}.teaser{width:100%;margin-bottom:1em}.teaser,.thumb{margin-left:auto;margin-right:auto}.thumb{max-width:20vw;max-height:30vh;width:auto;height:auto;display:block}.thumb-large{max-width:50vw;max-height:50vh}.demo{text-align:center}.demo:hover{box-shadow:0 0 5px #333}</style>
+
+	<title>Visualizing Evolving Trees</title><script></script></head><body>
+<div class="container">
+<h1> Visualizing Evolving Trees</h1>
+<h2 style="margin-top:0px">
+	<a href="https://arxiv.org/pdf/2106.08843.pdf">[paper]</a> <a href="https://github.com/abureyanahmed/evolving_tree">[algorithm]</a>
+	 <a href="https://github.com/abureyanahmed/evolving_tree/tree/main/dataset">[dataset]</a> 
+	<a href="https://github.com/abureyanahmed/evolving_tree/tree/main/metrics">[metric]</a>
+	<a href="https://ryngray.github.io/dynamic-trees/result.html">[result]</a>
+</h2>
+<!-- <a href="doc/paper.pdf"> <img class="teaser" src="teaser.64e90583.png"> -->
+</a>
+<p> This website contains information regarding the paper 'Visualizing Evolving Trees'.  Here we present ways to draw dynamic trees, where nodes are allowed to enter, but not leave.  We present two different algorithms, DynaCola (Dynamic Collision) and DynaSafe (Dynamic Safety) that draw these trees without crossings and with good compactness. </p> 
+ <h2> Math Geneology
+ </h2>
+
+<p>This graph, found here: <a href = "https://www.genealogy.math.ndsu.nodak.edu/"></a> shows advisor-advisee relationships in the world of mathematics, stretching back to the middle ages. The dataset includes the thesis titles, students, advisors, dates, and number of descendants. The total number of nodes is around 260,000 and is continuously updated. While this data is not quite a tree (or even connected, or planar), we extract a subset to create a tree with 500 nodes. The maximum node degree of this tree is 5 and the radius is 14. </p>
+
+<table cellspacing="0" cellpadding="0" style="border: none;margin-left:10px;">
+  <tr>
+    <td class="first"><img width="192px" src="DynNoSlice_math.gif" alt="Girl in a jacket"></td>
+    <td class="second"><img width="192px" src="dynagraph_math.gif" alt="Girl in a jacket"></td>
+    <td class="second"><img width="192px" src="dagre_math.gif" alt="Girl in a jacket"></td>
+    <td class="second"><img width="192px" src="radial_math.gif" alt="Girl in a jacket"></td>
+    <td class="second"><img width="192px" src="dynacola_math.gif" alt="Girl in a jacket"></td>
+    <td class="second"><img width="192px" src="dynasafe_math.gif" alt="Girl in a jacket"></td>
+  </tr>
+</table>
+	
+<img src="math_table.png" alt="Comparison of different methods">
+
+<table cellspacing="0" cellpadding="0" style="border: none;margin-left:10px;">
+  <tr>
+    <td class="first"><img width="192px" src="with_label/DynNoSlice_math.gif" alt="Girl in a jacket"></td>
+    <td class="second"><img width="192px" src="with_label/dynagraph_math.gif" alt="Girl in a jacket"></td>
+    <td class="second"><img width="192px" src="with_label/dagre_math.gif" alt="Girl in a jacket"></td>
+    <td class="second"><img width="192px" src="with_label/radial_math.gif" alt="Girl in a jacket"></td>
+    <td class="second"><img width="192px" src="with_label/dynacola_math.gif" alt="Girl in a jacket"></td>
+    <td class="second"><img width="192px" src="with_label/dynasafe_math.gif" alt="Girl in a jacket"></td>
+  </tr>
+</table>
+
+<h2> Tree of Life</h2>
+
+
+This graph, found here: <a href = "http://tolweb.org/tree/"></a>, captures the evolutionary progression of life on Earth.The underlying data is a tree structure with a natural time component. As a new species evolves, a new node in the tree is added. The edges give the parent-child relation of the nodes, where the parent is the original species, and the child is the new species. We use a subset of this graph with 500 nodes. The maximum node degree of this tree is 5, and the radius is 24.
+
+<table cellspacing="0" cellpadding="0" style="border: none;margin-left:10px;">
+  <tr>
+    <td class="second"><img width="192px" src="DynNoSlice_tol.gif" alt="Girl in a jacket"></td>
+    <td class="second"><img width="192px" src="dynagraph_tol.gif" alt="Girl in a jacket"></td>
+    <td class="second"><img width="192px" src="dagre_tol.gif" alt="Girl in a jacket"></td>
+    <td class="second"><img width="192px" src="radial_tol.gif" alt="Girl in a jacket"></td>
+    <td class="second"><img width="192px" src="dynacola_tol.gif" alt="Girl in a jacket"></td>
+    <td class="second"><img width="192px" src="dynasafe_tol.gif" alt="Girl in a jacket"></td>
+  </tr>
+</table>
+
+<embed src="table_tol.png"/>
+
+
+<table cellspacing="0" cellpadding="0" style="border: none;margin-left:10px;">
+  <tr>
+    <td class="second"><img width="192px" src="with_label/DynNoSlice_tol.gif" alt="Girl in a jacket"></td>
+    <td class="second"><img width="192px" src="with_label/dynagraph_tol.gif" alt="Girl in a jacket"></td>
+    <td class="second"><img width="192px" src="with_label/dagre_tol.gif" alt="Girl in a jacket"></td>
+    <td class="second"><img width="192px" src="with_label/radial_tol.gif" alt="Girl in a jacket"></td>
+    <td class="second"><img width="192px" src="with_label/dynacola_tol.gif" alt="Girl in a jacket"></td>
+    <td class="second"><img width="192px" src="with_label/dynasafe_tol.gif" alt="Girl in a jacket"></td>
+  </tr>
+</table>
+
+</body></html>

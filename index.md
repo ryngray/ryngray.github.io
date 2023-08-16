@@ -1,8 +1,4 @@
 
----
-layout: default
----
-
-{% include test.html %}
+{% include index.html %}
 
 

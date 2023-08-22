@@ -11,7 +11,9 @@
 
 [Low-shot, Semi-supervised,
 Uncertainty Quantification Enabled Model for High Consequence HSI Data”](https://ieeexplore.ieee.org/document/9843707)
+
 [Coupled IGMM-GANs for Deep Multimodal Anomaly Detection in Human Mobility Data](https://arxiv.org/abs/1809.02728)
+
 
 
 # Knitting Projects
@@ -21,5 +23,6 @@ Uncertainty Quantification Enabled Model for High Consequence HSI Data”](https
 # Dancing Projects
 
 [Tucson Swing Festival (2022 and 2023)](tucsonswingfestival.com)
+
 Camp Hollywood Switch Room (2023)
 

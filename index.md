@@ -1,4 +1,4 @@
 
-{% include index.html %}
+{% include main.html %}
 
 

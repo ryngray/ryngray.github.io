@@ -1,7 +1,7 @@
 
 # Graph Visualization Projects
 
-[Visualizing Evolving Trees](https://ryngray.github.io/evolving-trees/index.html)
+[Visualizing Evolving Trees](https://ryngray.github.io/dynamic-trees/index.html)
 
 [A Scalable Method for Readable Tree Layouts](https://tiga1231.github.io/zmlt/demo/overview.html)
 

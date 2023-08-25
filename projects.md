@@ -1,11 +1,11 @@
 
 # Graph Visualization Projects
 
-[Visualizing Evolving Trees](ryngray.github.io/evolving-trees/index.html)
+[Visualizing Evolving Trees](https://ryngray.github.io/evolving-trees/index.html)
 
 [A Scalable Method for Readable Tree Layouts](https://tiga1231.github.io/zmlt/demo/overview.html)
 
-[Drawing Graphs on the Sphere](ryngray.github.io/Drawing_Graphs_on_the_Sphere__AVI_.pdf)
+[Drawing Graphs on the Sphere](https://ryngray.github.io/Drawing_Graphs_on_the_Sphere__AVI_.pdf)
 
 # Machine Learning Projects
 
@@ -18,11 +18,12 @@ Uncertainty Quantification Enabled Model for High Consequence HSI Data”](https
 
 # Knitting Projects
 
-[Ravelry Account](ravelry.com/people/booksforever)
+[Ravelry Account](https://ravelry.com/people/booksforever)
+
 
 # Dancing Projects
 
-[Tucson Swing Festival (2022 and 2023)](tucsonswingfestival.com)
+[Tucson Swing Festival (2022 and 2023)](https://tucsonswingfestival.com)
 
 Camp Hollywood Switch Room (2023)
 

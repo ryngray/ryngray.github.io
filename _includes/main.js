@@ -1,7 +1,7 @@
 chart = {
   // Specify the dimensions of the chart.
-  const width = 928;
-  const height = 600;
+  const width : 928;
+  const height : 600;
 
   // Specify the color scale.
   const color = d3.scaleOrdinal(d3.schemeCategory10);

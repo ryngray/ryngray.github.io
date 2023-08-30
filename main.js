@@ -96,6 +96,6 @@ function chart() {
 
 
 
-fetch('https://ryngray.github.io/_data/main.json')
+fetch('https://ryngray.github.io/main.json')
     .then((response) => response.json())
     .then((json) => console.log(json));

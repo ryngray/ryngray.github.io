@@ -1,4 +1,4 @@
-chart = {
+function chart() {
   // Specify the dimensions of the chart.
   const width = 928;
   const height = 600;

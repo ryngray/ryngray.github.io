@@ -1,7 +1,7 @@
 Beardatrice is my pandemic pet.  I got him in 2020 and he is a very personable, albeit grumpy, little lizard.  His favorite foods are mealworms, dubias, crickets, and any other kind of bug he can find.  Once, he caught a fly and that was the most athletic thing I've ever seen him do.
 
 
-![1](beardatrice/1.jpg)
+![1](https://ryngray.github.io/lizards/beardatrice/1.jpg)
 ![2](beardatrice/2.jpg)
 ![3](beardatrice/3.jpg)
 ![4](beardatrice/4.jpg)

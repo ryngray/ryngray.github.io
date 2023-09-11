@@ -1,4 +1,4 @@
-function chart() {
+function chart(data) {
   // Specify the dimensions of the chart.
   const width = 928;
   const height = 600;
@@ -98,4 +98,4 @@ function chart() {
 
 fetch('https://ryngray.github.io/main.json')
     .then((response) => response.json())
-    .then((json) => console.log(json));
+    .then((json) => chart(json));

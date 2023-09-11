@@ -22,6 +22,7 @@ function chart(data) {
       .on("tick", ticked);
 
   // Create the SVG container.
+  d3.select("body").append("p");
   const svg = d3.create("svg")
       .attr("width", width)
       .attr("height", height)

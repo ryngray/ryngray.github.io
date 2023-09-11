@@ -47,6 +47,12 @@ function chart(data) {
       .attr("r", 5)
       .attr("fill", d => color(d.group));
 
+  node.append("text")
+    .attr("dy", 4)
+    .attr("dx", -15)
+    .text(d => d.id);
+
+
   node.append("title")
       .text(d => d.id);
 

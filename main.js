@@ -11,6 +11,9 @@ function chart(data) {
   const links = data.links.map(d => ({...d}));
   const nodes = data.nodes.map(d => ({...d}));
 
+  console.log(links);
+  console.log(nodes);
+
   // Create a simulation with several forces.
   const simulation = d3.forceSimulation(nodes)
       .force("link", d3.forceLink(links).id(d => d.id))

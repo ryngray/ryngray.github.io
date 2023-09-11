@@ -22,8 +22,8 @@ function chart(data) {
       .on("tick", ticked);
 
   // Create the SVG container.
-  d3.select("body").append("p");
-  const svg = d3.create("svg")
+  // d3.select("body").append("p");
+  const svg = d3.select("body").append("svg")
       .attr("width", width)
       .attr("height", height)
       .attr("viewBox", [0, 0, width, height])

@@ -49,7 +49,9 @@ function chart(data) {
       .attr("stroke-width", 1.5)
     .selectAll()
     .data(nodes)
-    .join("circle")
+    .join("g")
+
+    node.append('circle')
       .attr("r", 10)
       .attr("fill", d => color(d.group));
 
@@ -57,9 +59,6 @@ function chart(data) {
     .attr("dy", 4)
     .attr("dx", -15)
     .text(d => d.id);
-
-    
-
 
   node.append("title")
       .text(d => d.id);
@@ -78,9 +77,9 @@ function chart(data) {
         .attr("x2", d => d.target.x)
         .attr("y2", d => d.target.y);
 
-    node
-        .attr("cx", d => d.x)
-        .attr("cy", d => d.y);
+    node.attr("transform", d=>`translate(${d.x}, ${d.y})`);
+        // .attr("cx", d => d.x)
+        // .attr("cy", d => d.y);
   }
 
   // Reheat the simulation when drag starts, and fix the subject position.
@@ -112,7 +111,7 @@ function chart(data) {
   let zoom = d3.zoom()
   .on('zoom', handleZoom);
 
-  d3.selectall('svg')
+  d3.selectAll('svg')
     .call(zoom);
 
   return svg.node();

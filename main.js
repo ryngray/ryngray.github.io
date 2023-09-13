@@ -44,7 +44,7 @@ function chart(data) {
     .join("line")
       .attr("stroke-width", d => Math.sqrt(d.value));
 
-  const node = svg.append("g")
+  const node = svg.select("g")
       .attr("stroke", "#fff")
       .attr("stroke-width", 1.5)
     .selectAll()
@@ -112,7 +112,7 @@ function chart(data) {
   let zoom = d3.zoom()
   .on('zoom', handleZoom);
 
-  d3.select('svg')
+  d3.selectall('svg')
     .call(zoom);
 
   return svg.node();

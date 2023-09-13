@@ -39,7 +39,8 @@ function chart(data) {
     .selectAll("line")
     .data(links)
     .join("line")
-      .attr("stroke-width", 1.5)//d => Math.sqrt(d.value));
+      .attr("stroke", "black")
+      .attr("stroke-width", 1.5);//d => Math.sqrt(d.value));
 
   //Create node containers
   const node = svg.select("g")

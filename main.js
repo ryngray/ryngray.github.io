@@ -17,9 +17,6 @@ function chart(data) {
   const links = data.links.map(d => ({...d}));
   const nodes = data.nodes.map(d => ({...d}));
 
-  console.log(links);
-  console.log(nodes);
-
   // Create a simulation with several forces.
   const simulation = d3.forceSimulation(nodes)
       .force("link", d3.forceLink(links).id(d => d.id))
@@ -39,11 +36,12 @@ function chart(data) {
   const link = svg.append("g")
       .attr("stroke", "#999")
       .attr("stroke-opacity", 0.6)
-    .selectAll()
+    .selectAll("line")
     .data(links)
     .join("line")
       .attr("stroke-width", d => Math.sqrt(d.value));
 
+  //Create node containers
   const node = svg.select("g")
       .attr("stroke", "#fff")
       .attr("stroke-width", 1.5)
@@ -51,13 +49,15 @@ function chart(data) {
     .data(nodes)
     .join("g")
 
-    node.append('circle')
-      .attr("r", 10)
-      .attr("fill", d => color(d.group));
-
+  //Create circles for each node
+  node.append('circle')
+    .attr("r", 10)
+    .attr("fill", d => color(d.group));
+  //Create text label for each node
   node.append("text")
-    .attr("dy", 4)
-    .attr("dx", -15)
+    .attr("x", 0)
+    .attr("y", 8)
+    .attr("stroke", "black")
     .text(d => d.id);
 
   node.append("title")
@@ -108,6 +108,7 @@ function chart(data) {
   // stop naturally, but it’s a good practice.)
   // invalidation.then(() => simulation.stop());
 
+  //Create the zoom/pan interaction
   let zoom = d3.zoom()
   .on('zoom', handleZoom);
 

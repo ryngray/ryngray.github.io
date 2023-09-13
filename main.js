@@ -1,3 +1,9 @@
+function handleZoom(e) {
+  d3.select('svg g')
+    .attr('transform', e.transform);
+}
+
+
 function chart(data) {
   // Specify the dimensions of the chart.
   const width = 928;
@@ -44,13 +50,15 @@ function chart(data) {
     .selectAll()
     .data(nodes)
     .join("circle")
-      .attr("r", 5)
+      .attr("r", 10)
       .attr("fill", d => color(d.group));
 
   node.append("text")
     .attr("dy", 4)
     .attr("dx", -15)
     .text(d => d.id);
+
+    
 
 
   node.append("title")
@@ -100,6 +108,12 @@ function chart(data) {
   // really matter since the target alpha is zero and the simulation will
   // stop naturally, but it’s a good practice.)
   // invalidation.then(() => simulation.stop());
+
+  let zoom = d3.zoom()
+  .on('zoom', handleZoom);
+
+  d3.select('svg')
+    .call(zoom);
 
   return svg.node();
 }

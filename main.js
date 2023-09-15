@@ -57,8 +57,9 @@ function chart(data) {
   node.append('circle')
     .attr("r", 10)
     .attr("fill", d => color(d.group))
-    .on('click', function(d){
-      window.open(d.site_link)
+    .attr('"xlink:href"', function(d){
+      console.log(d.site_link)
+      return d.site_link
     });
   //Create text label for each node
   node.append("text")

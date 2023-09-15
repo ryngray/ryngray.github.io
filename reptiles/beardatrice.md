@@ -25,3 +25,6 @@ Beardatrice is my pandemic pet.  I got him in 2020 and he is a very personable, 
 ![22](beardatrice/22.jpeg)
 
 
+Beardatrice with a friend, Sasha.  They did not last long together as it turns out Beardatrice is a little aggressive.
+![23](beardatrice/23.jpeg)
+

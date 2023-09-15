@@ -22,8 +22,8 @@ function chart(data) {
 
   // Create a simulation with several forces.
   const simulation = d3.forceSimulation(nodes)
-      .force("link", d3.forceLink(links).id(d => d.id))
-      .force("charge", d3.forceManyBody(10))
+      // .force("link", d3.forceLink(links).id(d => d.id))
+      .force("charge", d3.forceManyBody())
       .force("center", d3.forceCenter(width / 2, height / 2))
       .on("tick", ticked);
 
@@ -33,7 +33,7 @@ function chart(data) {
       .attr("viewBox", `0 0 900 600`)
       // .attr("viewBox", [0, 0, width, height])
       .attr("style", "max-width: 100%; height: auto;")
-      .attr('preserveAspectRatio','xMinYMin');
+      // .attr('preserveAspectRatio','xMinYMin');
 
   // Add a line for each link, and a circle for each node.
   const link = svg.append("g")

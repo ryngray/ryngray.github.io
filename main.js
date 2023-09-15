@@ -46,7 +46,7 @@ function chart(data) {
       .attr("stroke-width", 1.5);//d => Math.sqrt(d.value));
 
   //Create node containers
-  const node = svg.select("g")
+  const node = svg.select("a")
       .attr("stroke", "#fff")
       .attr("stroke-width", 1.5)
     .selectAll()

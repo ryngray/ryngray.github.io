@@ -22,7 +22,7 @@ function chart(data) {
 
   // Create a simulation with several forces.
   const simulation = d3.forceSimulation(nodes)
-      // .force("link", d3.forceLink(links).id(d => d.id))
+      .force("link", d3.forceLink(links))
       .force("charge", d3.forceManyBody())
       .force("center", d3.forceCenter(width / 2, height / 2))
       .on("tick", ticked);

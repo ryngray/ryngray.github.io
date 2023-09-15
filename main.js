@@ -52,15 +52,14 @@ function chart(data) {
     .selectAll()
     .data(nodes)
     .join("g")
+    .attr('xlink:href', function(d){
+      return d.site_link;
+    });
 
   //Create circles for each node
   node.append('circle')
     .attr("r", 10)
-    .attr("fill", d => color(d.group))
-    .attr('xlink:href', function(d){
-      console.log(d.site_link)
-      return d.site_link;
-    });
+    .attr("fill", d => color(d.group));
   //Create text label for each node
   node.append("text")
     .attr("x", 0)

@@ -20,7 +20,7 @@ function chart(data) {
   // Create a simulation with several forces.
   const simulation = d3.forceSimulation(nodes)
       .force("link", d3.forceLink(links).id(d => d.id))
-      .force("charge", d3.forceManyBody())
+      .force("charge", d3.forceManyBody(10))
       .force("center", d3.forceCenter(width / 2, height / 2))
       .on("tick", ticked);
 
@@ -53,7 +53,10 @@ function chart(data) {
   //Create circles for each node
   node.append('circle')
     .attr("r", 10)
-    .attr("fill", d => color(d.group));
+    .attr("fill", d => color(d.group))
+    .on('click', function(d){
+      window.open(d.site_link)
+    });
   //Create text label for each node
   node.append("text")
     .attr("x", 0)

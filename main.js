@@ -23,7 +23,7 @@ function chart(data) {
   // Create a simulation with several forces.
   const simulation = d3.forceSimulation(nodes)
       .force("link", d3.forceLink(links))
-      .force("charge", d3.forceManyBody())
+      .force("charge", d3.forceManyBody()).strength(-10)
       .force("center", d3.forceCenter(width / 2, height / 2))
       .on("tick", ticked);
 
@@ -85,8 +85,6 @@ function chart(data) {
         .attr("y2", d => d.target.y);
 
     node.attr("transform", d=>`translate(${d.x}, ${d.y})`);
-        // .attr("cx", d => d.x)
-        // .attr("cy", d => d.y);
   }
 
   // Reheat the simulation when drag starts, and fix the subject position.

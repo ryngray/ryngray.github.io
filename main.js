@@ -46,12 +46,12 @@ function chart(data) {
       .attr("stroke-width", 1.5);//d => Math.sqrt(d.value));
 
   //Create node containers
-  const node = svg.select("a")
+  const node = svg.select("g")
       .attr("stroke", "#fff")
       .attr("stroke-width", 1.5)
     .selectAll()
     .data(nodes)
-    .join("g")
+    .join("a")
     .attr('xlink:href', function(d){
       return d.site_link;
     });

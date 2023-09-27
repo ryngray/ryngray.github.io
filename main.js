@@ -22,7 +22,7 @@ function chart(data) {
 
   // Create a simulation with several forces.
   const simulation = d3.forceSimulation(nodes)
-      .force("link", d3.forceLink(links).distance(75))
+      .force("link", d3.forceLink(links).distance(50))
       .force("charge", d3.forceManyBody())
       .force("center", d3.forceCenter(width / 2, 100))
       .on("tick", ticked);
@@ -119,7 +119,7 @@ function chart(data) {
 
   d3.selectAll('svg')
     .call(zoom)
-    .call(zoom.transform, d3.zoomIdentity.translate(100, 50).scale(0.5));
+    .call(zoom.transform, d3.zoomIdentity.scale(1.5));
 
   return svg.node();
 }

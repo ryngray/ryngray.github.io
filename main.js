@@ -6,7 +6,7 @@ function handleZoom(e) {
 
 function chart(data) {
   // Specify the dimensions of the chart.
-  const width = 800;
+  const width = 650;
   const height = 500;
 
   // Specify the color scale.
@@ -119,7 +119,7 @@ function chart(data) {
 
   d3.selectAll('svg')
     .call(zoom)
-    .call(zoom.transform, d3.zoomIdentity.scale(1.5));
+    .call(zoom.transform, d3.zoomIdentity.scale(1));
 
   return svg.node();
 }

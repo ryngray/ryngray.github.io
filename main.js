@@ -22,9 +22,9 @@ function chart(data) {
 
   // Create a simulation with several forces.
   const simulation = d3.forceSimulation(nodes)
-      .force("link", d3.forceLink(links).distance(100))
+      .force("link", d3.forceLink(links).distance(50))
       .force("charge", d3.forceManyBody())
-      .force("center", d3.forceCenter(width / 10, height / 10))
+      .force("center", d3.forceCenter(width / 2, 0))
       .on("tick", ticked);
 
   // Create the SVG container.

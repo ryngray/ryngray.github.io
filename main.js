@@ -6,7 +6,7 @@ function handleZoom(e) {
 
 function chart(data) {
   // Specify the dimensions of the chart.
-  const width = 500;
+  const width = 800;
   const height = 500;
 
   // Specify the color scale.
@@ -22,9 +22,9 @@ function chart(data) {
 
   // Create a simulation with several forces.
   const simulation = d3.forceSimulation(nodes)
-      .force("link", d3.forceLink(links).distance(50))
+      .force("link", d3.forceLink(links).distance(75))
       .force("charge", d3.forceManyBody())
-      .force("center", d3.forceCenter(width / 2, 0))
+      .force("center", d3.forceCenter(width / 2, 100))
       .on("tick", ticked);
 
   // Create the SVG container.

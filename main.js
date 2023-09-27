@@ -6,8 +6,8 @@ function handleZoom(e) {
 
 function chart(data) {
   // Specify the dimensions of the chart.
-  const width = 928;
-  const height = 600;
+  const width = 500;
+  const height = 500;
 
   // Specify the color scale.
   const color = d3.scaleOrdinal(d3.schemeCategory10);
@@ -24,7 +24,7 @@ function chart(data) {
   const simulation = d3.forceSimulation(nodes)
       .force("link", d3.forceLink(links))
       .force("charge", d3.forceManyBody())
-      .force("center", d3.forceCenter(width / 2, height / 2))
+      .force("center", d3.forceCenter(width / 10, height / 10))
       .on("tick", ticked);
 
   // Create the SVG container.
@@ -59,7 +59,7 @@ function chart(data) {
   //Create circles for each node
   node.append('circle')
     .attr("r", 10)
-    .attr("fill", d => color(d.group));
+    .attr("fill", d => color('#15816f'));
   //Create text label for each node
   node.append("text")
     .attr("x", 0)
@@ -118,7 +118,8 @@ function chart(data) {
   .on('zoom', handleZoom);
 
   d3.selectAll('svg')
-    .call(zoom);
+    .call(zoom)
+    .call(zoom.transform, d3.zoomIdentity.translate(100, 50).scale(0.5));
 
   return svg.node();
 }

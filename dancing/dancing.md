@@ -1,6 +1,5 @@
 # Dancing - Lindy Hop
 
-Read about my thoughts on my [blog](blog.md)
 
 ## The Jelly Roles
 

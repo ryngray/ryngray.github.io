@@ -20,6 +20,7 @@ Uncertainty Quantification Enabled Model for High Consequence HSI Data”](https
 
 [Ravelry Account](https://ravelry.com/people/booksforever)
 
+[Secret in Process Project](woolygraphs.md)
 
 # Dancing Projects
 

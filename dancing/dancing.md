@@ -1,5 +1,7 @@
 # Dancing - Lindy Hop
 
+Read about my thoughts on my [blog](blog.md)
+
 ## The Jelly Roles
 
 The jelly roles are a group of dancers dedicated to promoting switch and gender neutral dancing.  We firmly believe that switch dancing is a valid dance and should not be looked down on by any organization, competition, or human.  We believe that men can follow, women can lead, and anyone on the gender spectrum can dance how they like.  We believe that masculine follows and feminine leads are not less than the status quo.  We work to give people a safe place to dance no matter their role.

@@ -30,4 +30,4 @@ Camp Hollywood Switch Room (2023)
 
 # Old Projects
 
-Undergrad MCM: [MCM Reports](mcm/mcm.md)
+Undergrad MCM: [MCM Reports](MCM/mcm.md)

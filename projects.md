@@ -1,5 +1,5 @@
 
-# Graph Visualization Projects
+# Projects
 
 [Visualizing Evolving Trees](https://ryngray.github.io/dynamic-trees/index.html)
 

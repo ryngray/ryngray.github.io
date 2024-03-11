@@ -32,7 +32,7 @@ function chart(data) {
   const svg = d3.select("body").append("svg")
       // .attr("viewBox", `0 0 900 600`)
       .attr("viewBox", `0, 0,`+width+`,`+ height)
-      .attr("style", "max-width: 100%; height: auto;")
+      .attr("style", "max-width: 75%; height: auto;")
       // .attr('preserveAspectRatio','xMinYMin');
 
   // Add border to visualization

@@ -39,8 +39,8 @@ function chart(data) {
   var borderPath = svg.append("rect")
     .attr("x", 0)
     .attr("y", 0)
-    .attr("height", h)
-    .attr("width", w)
+    .attr("height", height)
+    .attr("width", width)
     .style("stroke", bordercolor)
     .style("fill", "none")
     .style("stroke-width", border);

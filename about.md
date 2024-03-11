@@ -1,4 +1,4 @@
-<img style="float: right;" src="Ryn_img.jpg">
+<img align="right" src="Ryn_img.jpg"/>
 
 Ryn Gray is a current PhD student at the University of Arizona. They received their Bachelor of Sciences in Computer Science and Applied Mathematics from the University of Colorado at Boulder.  Their research interests include visualizations, especially visualizations of large graphs, graph algorithms, machine learning, data science, and knitting.  
 

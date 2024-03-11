@@ -41,9 +41,9 @@ function chart(data) {
     .attr("y", 0)
     .attr("height", height)
     .attr("width", width)
-    .style("stroke", bordercolor)
+    .style("stroke", 'black')
     .style("fill", "none")
-    .style("stroke-width", border);
+    .style("stroke-width", 2);
     // Add a line for each link, and a circle for each node.
   const link = svg.append("g")
       .attr("stroke", "#999")

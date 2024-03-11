@@ -2,7 +2,12 @@ Ryn Gray is a current PhD student at the University of Arizona. They received th
 
 In thier free time, Ryn helps run the Lindy Hop scene in Tucson, takes care of their lizards, and knits fabulous items.
 
-If you are interested in contacting Ryn, please check the relevant tab to get the best way to contact them for each topic.
+If you are interested in contacting me, please reach out to the following place:
 
+Research, graph topics, visualization, machine learning: ryngray@arizona.edu
+
+Dancing, switch dancing, lessons, performances: thejellyroles@gmail.com
+
+Knitting, e-textiles, other fiber arts: booksforever on Ravelry or lizardsinscarves@gmail.com
 
 

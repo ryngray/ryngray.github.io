@@ -35,16 +35,7 @@ function chart(data) {
       .attr("style", "max-width: 100%; height: auto;")
       // .attr('preserveAspectRatio','xMinYMin');
 
-  // Add border to visualization
-  var borderPath = svg.append("rect")
-    .attr("x", 0)
-    .attr("y", 0)
-    .attr("height", h)
-    .attr("width", w)
-    .style("stroke", bordercolor)
-    .style("fill", "none")
-    .style("stroke-width", border);
-    // Add a line for each link, and a circle for each node.
+  // Add a line for each link, and a circle for each node.
   const link = svg.append("g")
       .attr("stroke", "#999")
       .attr("stroke-opacity", 0.6)

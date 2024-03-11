@@ -30,8 +30,8 @@ function chart(data) {
   // Create the SVG container.
   // d3.select("body").append("p");
   const svg = d3.select("body").append("svg")
-      .attr("viewBox", `0 0 900 600`)
-      // .attr("viewBox", [0, 0, width, height])
+      // .attr("viewBox", `0 0 900 600`)
+      .attr("viewBox", `0, 0,`+width+`,`+ height)
       .attr("style", "max-width: 100%; height: auto;")
       // .attr('preserveAspectRatio','xMinYMin');
 

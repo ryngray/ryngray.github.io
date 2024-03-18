@@ -10,7 +10,7 @@ function chart(data) {
   const height = 500;
 
   // Specify the color scale.
-  const color = d3.scaleOrdinal(d3.schemeCategory10);
+  const color = d3.scaleLinear().range([0,3]).domain(['#15638d', '#15945c'])//d3.scaleOrdinal(d3.schemeCategory10);
 
   // The force simulation mutates links and nodes, so create a copy
   // so that re-evaluating this cell produces the same result.
@@ -24,7 +24,7 @@ function chart(data) {
   const simulation = d3.forceSimulation(nodes)
       .force("link", d3.forceLink(links).distance(50))
       .force("charge", d3.forceManyBody())
-      .force("center", d3.forceCenter(width / 2, 100))
+      .force("center", d3.forceCenter(width / 2, height/2))
       .on("tick", ticked);
 
   // Create the SVG container.
@@ -69,7 +69,7 @@ function chart(data) {
   //Create circles for each node
   node.append('circle')
     .attr("r", 10)
-    .attr("fill", d => color('#15816f'));
+    .attr("fill", d => color(d.height));
   //Create text label for each node
   node.append("text")
     .attr("x", 0)

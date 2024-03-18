@@ -10,7 +10,7 @@ function chart(data) {
   const height = 500;
 
   // Specify the color scale.
-  const color = d3.scaleLinear().range([0,3]).domain(['#15638d', '#15945c'])//d3.scaleOrdinal(d3.schemeCategory10);
+  const color = d3.scaleLinear().domain([0,3]).range(['#15638d', '#15945c'])//d3.scaleOrdinal(d3.schemeCategory10);
 
   // The force simulation mutates links and nodes, so create a copy
   // so that re-evaluating this cell produces the same result.

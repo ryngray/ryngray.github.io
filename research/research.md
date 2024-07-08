@@ -6,3 +6,6 @@
 
 [Drawing Graphs on the Sphere](ryngray.github.io/Drawing_Graphs_on_the_Sphere__AVI_.pdf)
 
+[A Graph Model and a Layout Algorithm for Knitting Patterns](https://arxiv.org/abs/2406.13800)
+
+[Wooly Graphs : A Mathematical Framework For Knitting](https://arxiv.org/abs/2407.00511)

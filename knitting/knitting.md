@@ -4,3 +4,8 @@ I have been knitting since I was about 8.  I learned some basics from my mom and
 
 You can find my knitting on my [ravelry](https://www.ravelry.com/people/booksforever).  I have done work with lace, colorwork, beads, e-textiles, and more!
 
+I have been doing some research into modeling knitting through graphs.  You can find the papers here:
+
+[Wooly Graphs : A Mathematical Framework For Knitting](https://arxiv.org/abs/2407.00511)
+
+[A Graph Model and a Layout Algorithm for Knitting Patterns](https://arxiv.org/abs/2406.13800)

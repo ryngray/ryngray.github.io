@@ -1,0 +1,26 @@
+function handleFile(event) {
+    const file = event.target.files[0];
+
+    const reader = new FileReader();
+    reader.onload = function(e) {
+        const data = new Uint8Array(e.target.result);
+        const workbook = XLSX.read(data, { type: 'array' });
+
+        // Assuming the first sheet contains the relevant data
+        const firstSheet = workbook.Sheets[workbook.SheetNames[0]];
+
+        // Convert the sheet to JSON
+        const jsonData = XLSX.utils.sheet_to_json(firstSheet, { header: 1 });
+
+        // Extract column headers and rows
+        const headers = jsonData[0];
+        const rows = jsonData.slice(1);
+
+        // Visualize the data
+        visualizeData(headers, rows);
+    };
+    reader.readAsArrayBuffer(file);
+}
+
+// Wait for the file to be uploaded
+document.getElementById('fileInput').addEventListener('change', handleFile, false);

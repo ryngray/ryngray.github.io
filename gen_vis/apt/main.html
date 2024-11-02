@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vis4Good -- APT</title>
+    
+    <!-- Include D3.js -->
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://unpkg.com/d3-array@1"></script>
+    <script src="https://unpkg.com/d3-collection@1"></script>
+    <script src="https://unpkg.com/d3-path@1"></script>
+    <script src="https://unpkg.com/d3-shape@1"></script>
+    <script src="https://unpkg.com/d3-sankey@0"></script>
+
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <defs>
+        <filter id="shadow">
+            <feDropShadow dx="2" dy="2" stdDeviation="2" flood-color="rgba(0,0,0,0.5)" />
+        </filter>
+    </defs>
+    <h1>Snazzy Title</h1>
+
+    <p>
+        Here I will introduce things and do something fancy, who knows?
+    </p>
+
+    <p>
+        Ideas:
+         <ul>
+          <li>Questions for the meeting
+            <ul>
+                <li>Anything important about 2008/2009 or 2019?</li>
+            </ul>
+          </li>
+          <li>"Race" visualization where we look at the total number of things ratified/done</li>
+          <s><li>Heatmap TODO
+                 <ul>
+                  <li>Most/earliest</li>
+                  <li>Alphabetical</li>
+                  <li>Randomized</li>
+                  <li>Least/latest</li>
+                  <li>By region</li>
+                  <li>Labels (Yes, No, Partially, NaN)</li>
+                  <li>Manually define line breaks for yaxis</li>
+                  <li>Mouseover information
+                    <ul>
+                        <li>Country</li>
+                        <li>Date</li>
+                        <li>Item</li>
+                        <li>Other relevant info?</li>
+                    </ul>
+                  </li>
+                </ul> 
+            </li>
+            </s>
+          <li><s>Stacked Area Map of the different things that people have done
+          </s>
+            <ul>
+                <li>Mouseover interactions</li>
+                <li>Interactions to update the x axis</li>
+                <li>A way to randomize order</li>
+            </ul>
+          </li>
+          <li>Boxplot through time for aggregated data or violin or something</li>
+            <ul>
+                <s><li>Score each country from 1 to 8 (.5 for partially?)</li>
+                <li>Plot these on violin plots</li>
+                <li>We should have a time component, so we can see the violin plots ascending</li>
+                <li>Raincloud plot!</li>
+            </s>
+                <li>Allow mouseover so we can see which values are given and what country it is</li>
+                <li>Allow filter so you can choose only some indicators?</li>
+                <li>Allow selection so we can follow a country through time</li>
+                <li>Give feedback on what year it is</li>
+                <li>Create a play button so we can watch without scrolling</li>
+            </ul>
+          <li>Each of these ideas need some background, we need to find some dates and other things to highlight what the data means, what influences were used to get different countries to fall in line, etc</li>
+          <s><li>Falling dominos, what is the most common order for countries to adopt, does this change for different regions?
+          </li></s>
+          <ul>
+            <li>Set up initial Graph</li>
+            <li>Ability to choose how many we look at (2-8)</li>
+            <li>Order based on the title of the thing</li>
+          </ul>
+          <li>Map by population with timeline information</li>
+          <ul>
+            <li>Get map of the world</li>
+            <li>Get population information</li>
+            <li>Overlay map with population info</li>
+            <li>Color population over time with number of ratified items</li>
+          </ul>
+        </ul> 
+    </p>
+
+    <div id="raincloudContainer">
+        <input type="range" id="raincloudSlider" min="0" max="100" step="1">
+        <div id="raincloud-tooltip" style="position: absolute; visibility: hidden; background: white; border: 1px solid black; padding: 5px; border-radius: 3px;"></div>
+        <div id="raincloudChart">
+            <script src="raincloud.js"></script>
+        </div>
+    </div>
+
+    <div id="alluvialContainer">
+        <div id="alluvialChart">
+            <script src="alluvial.js"></script>
+        </div>
+    </div>
+
+    <div id="stackedContainer">
+        <div id="stackedChart"></div>
+        <script src="stacked.js"></script>
+    </div>
+
+
+    <div id="heatmapContainer">
+        <div id="heatmap-tooltip" style="position: absolute; background-color: rgba(240, 240, 240, 0.9); padding: 8px; border-radius: 5px; box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3); visibility: hidden; pointer-events: none; font-size: 12px; line-height: 1.5;">
+        </div>
+        <select id="sortOptions">
+            <option value="byRegion">By Region</option>
+            <option value="alphabetical">Alphabetical</option>
+            <option value="mostValues">Most Values</option>
+            <option value="leastValues">Least Values</option>
+            <option value="random">Random</option>
+        </select>
+        <div id="sliderContainer"></div>
+        <!-- SVG for D3 chart -->
+        <div id="chart"></div>
+        <!-- External JavaScript file -->
+        <script src="heatmap.js"></script>
+    </div>
+
+</body>
+</html>

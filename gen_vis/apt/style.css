@@ -1,0 +1,15 @@
+body {
+    font-family: Arial, sans-serif;
+}
+#chart {
+    margin-top: 20px;
+}
+.bar {
+    fill: steelblue;
+}
+.bar:hover {
+    fill: orange;
+}
+.axis-label {
+    font-size: 14px;
+}

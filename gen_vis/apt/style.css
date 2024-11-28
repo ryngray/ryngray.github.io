@@ -1,6 +1,127 @@
+/* General Styles */
 body {
     font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
 }
+
+.container {
+    width: 95%; /* Use full width */
+    padding: 1rem; /* Add padding inside the container */
+}
+
+/* Headers */
+h1 {
+    font-size: 2rem;
+    color: #285391;
+    text-align: center;
+    margin-bottom: 1rem;
+    padding-left: 2rem;  /* Adds space to the left of the header */
+    padding-right: 2rem; /* Adds space to the right of the header */
+}
+
+p {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    text-align: justify;
+    padding-left: 2rem;  /* Adds space to the left of the paragraph */
+    padding-right: 2rem; /* Adds space to the right of the paragraph */
+}
+
+
+/* Visualization Containers */
+.visualization-container {
+    margin: 0; /* Remove centering margin to start from left edge */
+    padding: 1rem;
+    background-color: #ffffff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    width: 100%; /* Ensure it takes full width */
+    overflow-x: auto; /* Ensure large visualizations don't break layout */
+}
+
+.visualization-container svg {
+    display: block;
+    margin: 0; /* Remove margin so it aligns with the container */
+}
+
+/* Legend Styling */
+.legend {
+    font-size: 0.9rem;
+    margin-top: 1rem;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.legend-item rect {
+    margin-right: 0.5rem;
+}
+
+.legend-title {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+/* Interactivity Tips */
+.interaction-tips {
+    font-size: 0.9rem;
+    font-style: italic;
+    color: #555;
+    margin-top: 1rem;
+    text-align: center;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 1rem;
+    font-size: 0.8rem;
+    color: #666;
+    background-color: #2a9372;
+    color: #fff;
+    margin-top: 2rem;
+}
+
+#chart {
+    margin-top: 20px;
+}
+
+.bar {
+    fill: steelblue;
+}
+
+.bar:hover {
+    fill: orange;
+}
+
+.axis-label {
+    font-size: 14px;
+}
+
+#sliderContainer {
+    display: flex;                /* Use flexbox for horizontal layout */
+    align-items: center;          /* Vertically center items */
+    gap: 10px;                    /* Space between slider and button */
+}
+
+#raincloudSlider {
+    width: auto;                  /* Allow D3 to control the width */
+    flex-shrink: 0;               /* Prevent the slider from shrinking */
+}
+
+#playButton {
+    padding: 5px 10px;            /* Add padding for appearance */
+    font-size: 14px;              /* Adjust button size */
+    cursor: pointer;              /* Pointer for interactivity */
+}
+
 #chart {
     margin-top: 20px;
 }
@@ -12,4 +133,20 @@ body {
 }
 .axis-label {
     font-size: 14px;
+}
+#sliderContainer {
+    display: flex;                /* Use flexbox for horizontal layout */
+    align-items: center;          /* Vertically center items */
+    gap: 10px;                    /* Space between slider and button */
+}
+
+#raincloudSlider {
+    width: auto;                  /* Allow D3 to control the width */
+    flex-shrink: 0;               /* Prevent the slider from shrinking */
+}
+
+#playButton {
+    padding: 5px 10px;            /* Add padding for appearance */
+    font-size: 14px;              /* Adjust button size */
+    cursor: pointer;              /* Pointer for interactivity */
 }

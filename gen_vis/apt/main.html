@@ -13,125 +13,134 @@
     <script src="https://unpkg.com/d3-shape@1"></script>
     <script src="https://unpkg.com/d3-sankey@0"></script>
 
-
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <defs>
-        <filter id="shadow">
-            <feDropShadow dx="2" dy="2" stdDeviation="2" flood-color="rgba(0,0,0,0.5)" />
-        </filter>
-    </defs>
-    <h1>Snazzy Title</h1>
+    <div class="container">
+        <defs>
+            <filter id="shadow">
+                <feDropShadow dx="2" dy="2" stdDeviation="2" flood-color="rgba(0,0,0,0.5)" />
+            </filter>
+        </defs>
 
-    <p>
-        Here I will introduce things and do something fancy, who knows?
-    </p>
+        <h1>Exploring Torture Prevention</h1>
 
-    <p>
-        Ideas:
-         <ul>
-          <li>Questions for the meeting
+        <h1>Background on APT</h1>
+        <p>
+            The Association for the Prevention of Torture (APT) is an international organization dedicated to preventing torture and other ill-treatment worldwide. Founded in 1977, APT works to strengthen legal frameworks, support effective oversight systems, and foster conditions that prevent torture from occurring in the first place. Their work involves collaboration with governments, civil society, and international organizations to promote transparency, accountability, and the rule of law. APT's efforts are guided by the belief that prevention is the most effective approach to combat torture.
+        </p>
+
+        <p>
+            APT has created a dataset on key preventive measures, such as ratifying international treaties, establishing national legal protections, and creating independent oversight mechanisms. These measures are represented through various indicators that track progress in adopting and operationalizing these safeguards.
+        </p>
+
+        <p>For more information, visit their official website: <a href="https://www.apt.ch/" target="_blank">https://www.apt.ch/</a></p>
+
+        <div>
+            <h1>Explore Global Progress on Torture Prevention</h1>
+            <p>
+                The interactive plot below lets you explore how countries have adopted measures to prevent torture over time. 
+                Use the slider or press the play button to watch as more countries implement protective measures.
+            </p>
+            <p>
+                Each <strong>region</strong> is highlighted with a unique color, and every <strong>dot</strong> represents a country. 
+                The further right the dot, the more protections that country has established.
+            </p>
             <ul>
-                <li>Anything important about 2008/2009 or 2019?</li>
+                <li><strong>Hover over dots</strong> to see details about individual countries.</li>
+                <li><strong>Search for a country</strong> using the search bar to find and highlight it instantly.</li>
+                <li><strong>Click on a dot</strong> to select a country and keep it highlighted for comparison.</li>
             </ul>
-          </li>
-          <li>"Race" visualization where we look at the total number of things ratified/done</li>
-          <s><li>Heatmap TODO
-                 <ul>
-                  <li>Most/earliest</li>
-                  <li>Alphabetical</li>
-                  <li>Randomized</li>
-                  <li>Least/latest</li>
-                  <li>By region</li>
-                  <li>Labels (Yes, No, Partially, NaN)</li>
-                  <li>Manually define line breaks for yaxis</li>
-                  <li>Mouseover information
-                    <ul>
-                        <li>Country</li>
-                        <li>Date</li>
-                        <li>Item</li>
-                        <li>Other relevant info?</li>
-                    </ul>
-                  </li>
-                </ul> 
-            </li>
-            </s>
-          <li><s>Stacked Area Map of the different things that people have done
-          </s>
+        </div>
+
+        <div id="raincloudContainer" class="visualization-container">
+            <div id="sliderContainer">
+                <input id="raincloudSlider" type="range">
+                <button id="playButton">Play</button>
+                <div id="search-container">
+                    <input type="text" id="country-search" placeholder="Search for a country..." />
+                </div>
+            </div>
+            <div id="raincloud-tooltip" style="position: absolute; visibility: hidden; background: white; border: 1px solid black; padding: 5px; border-radius: 3px;"></div>
+            <div id="raincloudChart">
+                <script type="module" src="raincloud.js"></script>
+            </div>
+        </div>
+
+        <div>
+            <h1>The Flow of Prevention: How Countries Adopt Torture Prevention Measures</h1>
+
+            <p>
+                The Sankey diagram below shows the pathways countries take as they adopt various measures to prevent torture. 
+                Each <strong>node</strong> represents an indicator of torture prevention at a specific stage, and the <strong>flows</strong> 
+                between nodes illustrate the transitions over time.
+            </p>
+
+            <p>
+                The width of each flow corresponds to the number of countries that followed a particular sequence. 
+                For example, many countries begin with <em>ratifying the UN Convention against Torture</em>, followed by steps like 
+                <em>submitting initial reports to CAT</em> or <em>prohibiting torture in the constitution</em>.
+            </p>
+
+            <p><strong>Note:</strong></p>
             <ul>
-                <li>Mouseover interactions</li>
-                <li>Interactions to update the x axis</li>
-                <li>A way to randomize order</li>
+                <li>The size of nodes and flows highlights the most commonly adopted measures.</li>
+                <li>Universally embraced measures, such as <em>prohibiting torture in the constitution</em>, contrast with 
+                    less widely implemented steps, like <em>operationalizing the NPM</em>.</li>
+                <li>The visualization reveals both the popularity of individual measures and the variety of sequences countries follow.</li>
             </ul>
-          </li>
-          <li>Boxplot through time for aggregated data or violin or something</li>
-            <ul>
-                <s><li>Score each country from 1 to 8 (.5 for partially?)</li>
-                <li>Plot these on violin plots</li>
-                <li>We should have a time component, so we can see the violin plots ascending</li>
-                <li>Raincloud plot!</li>
-            </s>
-                <li>Allow mouseover so we can see which values are given and what country it is</li>
-                <li>Allow filter so you can choose only some indicators?</li>
-                <li>Allow selection so we can follow a country through time</li>
-                <li>Give feedback on what year it is</li>
-                <li>Create a play button so we can watch without scrolling</li>
-            </ul>
-          <li>Each of these ideas need some background, we need to find some dates and other things to highlight what the data means, what influences were used to get different countries to fall in line, etc</li>
-          <s><li>Falling dominos, what is the most common order for countries to adopt, does this change for different regions?
-          </li></s>
-          <ul>
-            <li>Set up initial Graph</li>
-            <li>Ability to choose how many we look at (2-8)</li>
-            <li>Order based on the title of the thing</li>
-          </ul>
-          <li>Map by population with timeline information</li>
-          <ul>
-            <li>Get map of the world</li>
-            <li>Get population information</li>
-            <li>Overlay map with population info</li>
-            <li>Color population over time with number of ratified items</li>
-          </ul>
-        </ul> 
-    </p>
 
-    <div id="raincloudContainer">
-        <input type="range" id="raincloudSlider" min="0" max="100" step="1">
-        <div id="raincloud-tooltip" style="position: absolute; visibility: hidden; background: white; border: 1px solid black; padding: 5px; border-radius: 3px;"></div>
-        <div id="raincloudChart">
-            <script src="raincloud.js"></script>
+            <p>
+                This diagram offers a clear perspective on how countries progress through the steps to prevent torture.
+            </p>
         </div>
-    </div>
 
-    <div id="alluvialContainer">
-        <div id="alluvialChart">
-            <script src="alluvial.js"></script>
+        <div id="alluvialContainer" aria-labelledby="alluvial-title" class="visualization-container">
+            <h2 id="alluvial-title" class="visually-hidden">Interactive Sankey Diagram</h2>
+            <div id="alluvialChart">
+                <script type="module" src="alluvial.js"></script>
+            </div>
         </div>
-    </div>
-
-    <div id="stackedContainer">
-        <div id="stackedChart"></div>
-        <script src="stacked.js"></script>
-    </div>
 
 
-    <div id="heatmapContainer">
-        <div id="heatmap-tooltip" style="position: absolute; background-color: rgba(240, 240, 240, 0.9); padding: 8px; border-radius: 5px; box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3); visibility: hidden; pointer-events: none; font-size: 12px; line-height: 1.5;">
+        <h1>Indicators Over Time</h1>
+        <p>
+            This visualization illustrates the progression of indicator adoption by countries over time. Each line represents an indicator, showing how the number of adopting countries grows year by year. Key dates are highlighted with vertical markers to provide context about significant events.
+        </p>
+        <div id="basicContainer" class="visualization-container">
+            <div id="indicatorChart"></div>
+            <div id="indicator-tooltip" style="position: absolute; background-color: white; border: 1px solid black; padding: 5px; display: none;"></div>
+            <script type="module" src="indicatorChart.js"></script>
         </div>
-        <select id="sortOptions">
-            <option value="byRegion">By Region</option>
-            <option value="alphabetical">Alphabetical</option>
-            <option value="mostValues">Most Values</option>
-            <option value="leastValues">Least Values</option>
-            <option value="random">Random</option>
-        </select>
-        <div id="sliderContainer"></div>
-        <!-- SVG for D3 chart -->
-        <div id="chart"></div>
-        <!-- External JavaScript file -->
-        <script src="heatmap.js"></script>
-    </div>
 
+        <h1>Overall Understanding</h1>
+        <p>
+            Now that we have some basis for understanding what each of the indicators are and how they relate to the different countries, I have the last visualization that will give an overall view of the data.
+        </p>
+
+        <div id="heatmapContainer" class="visualization-container">
+            <div id="heatmap-tooltip" style="position: absolute; background-color: rgba(240, 240, 240, 0.9); padding: 8px; border-radius: 5px; box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3); visibility: hidden; pointer-events: none; font-size: 12px; line-height: 1.5;">
+            </div>
+            <select id="sortOptions">
+                <option value="byRegion">By Region</option>
+                <option value="alphabetical">Alphabetical</option>
+                <option value="mostValues">Most Values</option>
+                <option value="leastValues">Least Values</option>
+            </select>
+            <div id="sliderContainer"></div>
+            <div id="chart"></div>
+            <script src="heatmap.js"></script>
+        </div>
+
+    <h2>Closing Thoughts</h2>
+        <p>
+            This work was done with the help and organizational skills of Visualization for Social Good: <a href="https://www.vizforsocialgood.com/" target="blank">
+            <div>
+            <svg viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet">
+                <image x="0" y="0" width="10%" height="10%" xlink:href="VFSGLogo.svg" />
+            </svg>
+        </div>
+        </p>
+    </div>
 </body>
 </html>

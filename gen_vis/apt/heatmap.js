@@ -2,379 +2,338 @@
 d3.csv('APT_data.csv').then(data => {
     // Map the data to a usable format
     const formattedData = data.map(row => ({
-        rowLabel: row.Indicator, // Access the rowLabel column
-        colLabel: row.Country,   // Access the colLabel column
-        value: (row.Input === "Yes") ? 2 : (row.Input === "No" ? 0 : (row.Input === "Partially" ? 1 : null)), 
+        rowLabel: row.Country,
+        colLabel: row.Indicator,
+        value: row.Input === "Yes" ? 2 : row.Input === "No" ? 0 : row.Input === "Partially" ? 1 : 0,
         time: isNaN(new Date(row.Date)) ? null : new Date(row.Date),
-        rank: parseFloat(row.rank),
-        region : row.Region
+        region: row.Region,
     }));
 
-    // Now visualize the data using D3.js
-    visualizeHeatmap(formattedData);
+    // Debug: Check the formatted data
+    console.log("Formatted Data", formattedData);
+
+    // Calculate total "Yes" counts per country
+    const countryYesCounts = d3.rollups(
+        formattedData.filter(d => d.value === 2),
+        g => g.length,
+        d => d.rowLabel
+    );
+
+    // Debug: Check the grouped counts
+    console.log("Country Yes Counts", countryYesCounts);
+
+    // Convert the counts array into an object for easier lookup
+    const countryCountsMap = Object.fromEntries(countryYesCounts);
+
+    // Debug: Check the lookup map
+    console.log("Country Counts Map", countryCountsMap);
+
+    // Assign ranks to formatted data
+    formattedData.forEach(d => {
+        d.rank = countryCountsMap[d.rowLabel] || 0; 
+    });
+
+    // Debug: Check ranks in formatted data
+    console.log("Data with Ranks", formattedData);
+
+    // Call the visualization function
+    visualizeSmallMultiples(formattedData);
 });
 
-function visualizeHeatmap(data) {
-    // Set up the SVG and chart dimensions
-    const margin = { top: 100, right: 30, bottom: 30, left: 100 };
-    const width = 2000 - margin.left - margin.right;
-    const height = 700 - margin.top - margin.bottom;
 
-    // Get unique row and column labels and time
-    const timePoints = Array.from(new Set(data.map(d => d.time))).sort((a, b) => a - b);
-    const rowLabels = Array.from(new Set(data.map(d => d.rowLabel)));
-    const colLabels = Array.from(new Set(data.map(d => d.colLabel)));
+function visualizeSmallMultiples(data) {
+    // Set up the dimensions for small multiples
+    const margin = { top: 40, right: 20, bottom: 20, left: 20 }; // Increased top margin for space above heatmaps
+    const multipleWidth = 300;
+    const multipleHeight = 300;
 
-    let currentSliderValue = 0;  // Global variable to store slider value
-    let sortOption = 'byRegion'
-
-    // Set up scales
-    let x = d3.scaleBand()
-        .domain(colLabels)
-        .range([0, width])
-        .padding(0.01);
-
-    const y = d3.scaleBand()
-        .domain(rowLabels)
-        .range([0, height])
-        .padding(0.01);
-
-    const colorScale = d3.scaleLinear()
-        .domain([0, 2]) // Adjust this domain based on the range of your data
-        .interpolate(d3.interpolateRgb)
-        .range(["#f44336", "#2196f3"]);
-
-    // Create the SVG container
-    const svg = d3.select("#chart")
-        .append("svg")
-        .attr("width", width + margin.left + margin.right)
-        .attr("height", height + margin.top + margin.bottom)
-        .append("g")
-            .attr("transform", `translate(${margin.left},${margin.top})`);
+    const tooltip = d3.select("#heatmap-tooltip");
 
     const dropdown = d3.select("#sortOptions");
+    let currentGroup = "region"; // Default grouping by region
+    let ddvalue = ""
+
     dropdown.on("change", function() {
-        const selectedOption = this.value;
-        sortOption = this.value;
-        sortColumns(sortOption);
-        drawHeatmap(timePoints[currentSliderValue]);
-    });
-
-    // Function to sort columns based on dropdown selection
-    function sortColumns(option) {
-
-        let sortedColumns;
-
-        switch(option) {
-            case 'alphabetical':
-                sortedColumns = [...new Set(data.map(d => d.colLabel))].sort();
-                break;
-            case 'mostValues':
-                sortedColumns = [...new Set(data.map(d => d.colLabel))]
-                    .sort((a, b) => {
-                        const rankA = data.find(d => d.colLabel === a).rank;
-                        const rankB = data.find(d => d.colLabel === b).rank;
-                        return rankA - rankB;
-                    });
-                break;
-            case 'leastValues':
-                sortedColumns = [...new Set(data.map(d => d.colLabel))]
-                    .sort((a, b) => {
-                        const rankA = data.find(d => d.colLabel === a).rank;
-                        const rankB = data.find(d => d.colLabel === b).rank;
-                        return rankB - rankA;
-                    });
-                break;
-            case 'random':
-                sortedColumns = d3.shuffle([...new Set(data.map(d => d.colLabel))]);
-                break;
-            case 'byRegion':  // Assuming you have a "Region" field in your data
-                const regionOrder = ['Americas', 'Africa', 'Europe', 'Middle East', 'Asia-Pacific'];
-                sortedColumns = [...new Set(data.map(d => d.colLabel))].sort((a, b) =>
-                    d3.ascending(regionOrder.indexOf(data.find(d => d.colLabel === a).region, regionOrder.indexOf(data.find(d => d.colLabel === b).region))));
-                break;
+        currentGroup = this.value;
+        if(this.value == "mostValues"){
+            currentGroup = "rank"
+            ddvalue="mostValues"
         }
-
-        x.domain(sortedColumns)
-        return sortedColumns
-    }
-
-    // Function to determine color based on value and date comparison
-    function getColor(value, date, selectedDate) {
-        if(date === null){
-            return '#f44336'
+        if(this.value =="byRegion"){
+            currentGroup = "region"
+            ddvalue="byRegion"
         }
-        if (date > selectedDate) {
-            // If the date is before the selected date, use a gradient based on the value
-            return value === null ? "black" : "#f44336";
-        } else {
-            // If the date is on or after the selected date, use a neutral color
-            return value === null ? "black" : colorScale(value); // Change this color as needed
+        if(this.value=="leastValues"){
+            currentGroup="rank"
+            ddvalue="leastValues"
         }
-    }
-
-    // Define legend data and corresponding colors
-    const legendData = [
-        { label: "Yes", color: colorScale(2) },
-        { label: "No", color: colorScale(0) },
-        { label: "Partially", color: colorScale(1) },
-        { label: "Null", color: "black" }
-    ];
-
-    // Create a group for the legend
-    const legend = svg.append("g")
-        .attr("class", "legend")
-        .attr("transform", "translate(-80, -75)"); // Position legend (adjust as needed)
-
-        // Calculate legend dimensions for background box
-    const legendBoxWidth = 80; // Adjust width to fit text
-    const legendBoxHeight = legendData.length * 20 + 10; // Height based on items
-
-    // Add background rectangle for legend box
-    legend.append("rect")
-        .attr("x", -10) // Offset for padding around items
-        .attr("y", -10)
-        .attr("width", legendBoxWidth)
-        .attr("height", legendBoxHeight)
-        .attr("rx", 5) // Optional: rounded corners
-        .attr("ry", 5)
-        .style("fill", "none") // Transparent fill
-        .style("stroke", "black") // Border color
-        .style("stroke-width", 1.5); // Border thickness
-
-
-    // Add legend items
-    legendData.forEach((d, i) => {
-        // Legend color box
-        legend.append("rect")
-            .attr("x", 0)
-            .attr("y", i * 20)   // Spacing between items
-            .attr("width", 15)    // Width of legend box
-            .attr("height", 15)   // Height of legend box
-            .style("fill", d.color);
-
-        // Legend text
-        legend.append("text")
-            .attr("x", 25)       // Position text beside the box
-            .attr("y", i * 20 + 12) // Align text with box
-            .text(d.label)
-            .style("font-size", "12px")   // Adjust font size as needed
-            .attr("alignment-baseline", "middle"); // Vertically center text with box
+        if(this.value =="alphabetical"){
+            currentGroup="alphabetical"
+            ddvalue="alphabetical"
+            drawMultiplesAlphabetical(data,currentGroup,ddvalue)
+        }
+        console.log(currentGroup)
+        if(ddvalue=="alphabetical"){
+            drawMultiplesAlphabetical(data,currentGroup,ddvalue)
+        }
+        else{
+            drawMultiples(data, currentGroup, ddvalue);
+        }
     });
 
 
-    const cellsGroup = svg.append("g")
-        .attr("class", "heatmap-cells");
+    drawMultiples(data, currentGroup, ddvalue);
 
-    // Function to draw the heatmap for a specific time point
-    function drawHeatmap( selectedTime) {
-        // Filter data for the selected time
-        // const filteredData = data.filter(d => d.time.getTime() === selectedTime.getTime());
+   function drawMultiples(data, groupKey, ddValue) {
 
-        // Bind data and create rectangles for the heatmap
-        const cells = cellsGroup.selectAll("rect")
-            .data(data);
+    d3.select("#chart").selectAll("*").remove();
+       
 
-        const tooltip = d3.select("#heatmap-tooltip"); // Select the tooltip div
+    // Create the color legend
+const legendWidth = 200; // Set the width of the legend
+const legendHeight = 20; // Set the height of each legend item
+const colorBoxWidth = 30; // Width of each color box
+const spacing = 20; // Space between color boxes
 
-        cells.enter()
+const legendSVG = d3.select("#chart").append("svg")
+    .attr("width", legendWidth + spacing * 2) // Increase width to account for spacing
+    .attr("height", legendHeight+spacing * 3); // Increase height for three legend items
+
+const colorScale = d3.scaleLinear()
+    .domain([2, 0])
+    .range(["#285391", "#e36360"]);
+
+// Define the colors and labels
+const legendData = [
+    { value: 2, label: "Yes", color: colorScale(2) },
+    { value: 1, label: "Partially", color: colorScale(1) },
+    { value: 0, label: "No", color: colorScale(0) }
+];
+
+const legend = legendSVG.append("g")
+    .attr("class", "legend");
+
+// Create the legend items
+const legendItems = legend.selectAll(".legend-item")
+    .data(legendData)
+    .enter()
+    .append("g")
+    .attr("class", "legend-item")
+    .attr("transform", (d, i) => `translate(${spacing}, ${i * (legendHeight + 5)})`); // Add spacing between items
+
+// Create the color boxes in the legend
+legendItems.append("rect")
+    .attr("x", 0)
+    .attr("y", 0)
+    .attr("width", colorBoxWidth)
+    .attr("height", legendHeight)
+    .style("fill", d => d.color);
+
+// Add the text labels in the legend
+legendItems.append("text")
+    .attr("x", colorBoxWidth + 5) // Position text after color box
+    .attr("y", legendHeight / 2)
+    .attr("dy", ".35em")
+    .style("font-size", "12px")
+    .text(d => d.label);
+
+    const groupedData = d3.group(data, d => d[groupKey]);
+
+    // Sort the data by rank or alphabetically by first letter of country name
+    const sortedData = Array.from(groupedData.entries()).sort((a, b) => {
+        console.log("Sort value", ddValue)
+        if(ddValue == "mostValues"){
+        // Use the rank from the data of the first item in each group
+            const rankA = a[1][0].rank; // rank for the first entry in group A
+            const rankB = b[1][0].rank; // rank for the first entry in group B
+            return rankB - rankA; // Sorting in descending order
+        }
+        if(ddValue == "leastValues"){
+            const rankA = a[1][0].rank; // rank for the first entry in group A
+            const rankB = b[1][0].rank; // rank for the first entry in group B
+            return rankA - rankB; // Sorting in descending order   
+        }
+        else{
+            const groupNameA = a[0]; // Group name for group A
+            const groupNameB = b[0]; // Group name for group B
+            // Sort by the first letter of the country name alphabetically
+            return groupNameA.charAt(0).localeCompare(groupNameB.charAt(0)); // Sorting alphabetically by first letter
+        }
+    });
+
+    // Define grid layout
+    const columns = 4; // Number of columns
+    const multipleWidthWithMargin = multipleWidth + margin.left + margin.right;
+    const multipleHeightWithMargin = multipleHeight + margin.top + margin.bottom;
+
+    const svg = d3.select("#chart")
+        .append("svg")
+        .attr("width", columns * multipleWidthWithMargin)
+        .attr("height", Math.ceil(sortedData.length / columns) * multipleHeightWithMargin + margin.top); // Reserve space at the top
+
+    // Create a container for each group
+    const multiples = svg.selectAll(".multiple")
+        .data(sortedData)
+        .enter()
+        .append("g")
+        .attr("class", "multiple")
+        .attr("transform", (d, i) => {
+            const col = i % columns;
+            const row = Math.floor(i / columns);
+            return `translate(${col * multipleWidthWithMargin},${row * multipleHeightWithMargin + margin.top})`;
+        });
+
+    // Create heatmaps within each multiple
+    multiples.each(function([groupName, groupData]) {
+        const group = d3.select(this);
+
+        // Get unique row and column labels
+        const rowLabels = Array.from(new Set(groupData.map(d => d.rowLabel)));
+        const colLabels = Array.from(new Set(groupData.map(d => d.colLabel)));
+
+        const x = d3.scaleBand().domain(colLabels).range([0, multipleWidth]).padding(0.01);
+        const y = d3.scaleBand().domain(rowLabels).range([0, multipleHeight]).padding(0.01);
+
+        const colorScale = d3.scaleLinear()
+            .domain([2, 0])
+            .range(["#285391", "#e36360"]);
+
+        // Add group title
+        group.append("text")
+            .attr("x", multipleWidth / 2)
+            .attr("y", -margin.top / 2) // Position title above the heatmap
+            .attr("text-anchor", "middle")
+            .style("font-size", "16px")
+            .text(groupName);
+
+        // Draw squares for the heatmap
+        group.selectAll("rect")
+            .data(groupData)
+            .enter()
             .append("rect")
-            .merge(cells) // Merge existing and new cells
             .attr("x", d => x(d.colLabel))
             .attr("y", d => y(d.rowLabel))
             .attr("width", x.bandwidth())
             .attr("height", y.bandwidth())
-            .style("fill", d => getColor(d.value, d.time, selectedTime)) // Update color based on value and date
+            .style("fill", d => colorScale(d.value))
             .style("stroke", "black")
-            .on("mouseover", function(event, d) {
-                tooltip.style("visibility", "visible")
-                    .html(`
-                        <strong>Country:</strong> ${d.colLabel}<br>
-                        <strong>Indicator:</strong> ${d.rowLabel}<br>
-                        <strong>Date:</strong> ${d.time ? d.time.getFullYear() : "N/A"}
-                    `);
-            })
-            .on("mousemove", function(event) {
-                tooltip.style("top", (event.pageY + 10) + "px")
-                       .style("left", (event.pageX + 10) + "px");
-            })
-            .on("mouseout", function() {
-                tooltip.style("visibility", "hidden");
-            });
+            .on("mouseover", (event, d) => {
+                let tooltipContent;
 
-        cells.exit().remove(); // Remove old cells
-
-        // Remove the old x-axis if it exists
-        svg.selectAll(".x-axis").remove();
-        svg.selectAll(".y-axis").remove();
-
-        svg.append("g")
-            .attr("class", "x-axis")
-            .attr("transform", `translate(${x.bandwidth()},0)`)
-            .call(d3.axisTop(x))
-            .selectAll("text")
-            .attr("transform", "rotate(-90)")
-            .attr("x", function(d, i) {
-                return x.bandwidth();  // Offset each label by one position in x direction
-            })
-        .style("text-anchor", "start");
-
-        // Hide the x-axis tick marks
-        svg.selectAll(".x-axis .tick line")
-            .style("display", "none");  // Hides tick lines
-
-        svg.selectAll(".x-axis path")  // Hide the axis line
-            .style("display", "none")
-
-        svg.append("g")
-            .attr("class", "y-axis")
-            .attr("transform", "translate(-10, -10)")
-            .call(d3.axisLeft(y))
-            .selectAll("text")
-            .each(function(d) {
-                const self = d3.select(this);
-                
-                // Split the label into words
-                const words = d.split(" ");
-                const maxWordsPerLine = 2; // Adjust this number as needed
-                const lines = [];
-
-                // Create lines by grouping words
-                for (let i = 0; i < words.length; i += maxWordsPerLine) {
-                    lines.push(words.slice(i, i + maxWordsPerLine).join(" ")); // Join the words into a line
+                // Check if indicators are not null or undefined and have values
+                if (d.value == 2) {
+                    tooltipContent = `Indicator: ${d.colLabel}<br>Country: ${d.rowLabel}<br>Year: ${parseInt(d3.timeFormat("%Y")(d.time)) + 1}`;
+                } else {
+                    tooltipContent = `Indicator: ${d.colLabel}<br>Country: ${d.rowLabel}`;
                 }
 
-                // Clear the original label
-                self.text(null);
-
-                // Append each line as a separate tspan element with a slight vertical offset
-                lines.forEach(function(line, i) {
-                    self.append("tspan")
-                        .attr("x", 0)
-                        .attr("dy", i === 0 ? "0em" : "1.2em") // Offset for each line
-                        .text(line);
-                });
+                tooltip
+                    .style("visibility", "visible")
+                    .html(tooltipContent)
+                    .style("top", `${event.pageY}px`)
+                    .style("left", `${event.pageX}px`);
             })
-            .style("text-anchor", "end");  // Align text to the end
+            .on("mousemove", (event) => {
+                tooltip
+                    .style("top", `${event.pageY + 10}px`)
+                    .style("left", `${event.pageX + 10}px`);
+            })
+            .on("mouseout", () => {
+                tooltip.style("visibility", "hidden");
+            });
+    });
+}
+function drawMultiplesAlphabetical(data, groupKey, ddValue) {
+    // Group data by the first letter of the country name (rowLabel)
+    const groupedData = d3.group(data, d => d.rowLabel.charAt(0).toUpperCase());
 
-            svg.selectAll(".y-axis path")  // Hide the axis line
-                .style("display", "none")
+    // Remove any existing visuals
+    d3.select("#chart").selectAll("*").remove();
 
+    // Sort the groups alphabetically by the first letter of the country name
+    const sortedData = Array.from(groupedData.entries()).sort((a, b) => a[0].localeCompare(b[0]));
 
-    }
+    // Define grid layout
+    const columns = 4; // Number of columns
+    const multipleWidthWithMargin = multipleWidth + margin.left + margin.right;
+    const multipleHeightWithMargin = multipleHeight + margin.top + margin.bottom;
 
-    // Initial draw
-    // console.log("Data before initial draw", data)
-    drawHeatmap(timePoints[currentSliderValue]);
-
-    const slider_svg = d3.select("#sliderContainer")
+    const svg = d3.select("#chart")
         .append("svg")
-        .attr("width", width/2+margin.left)
-        .attr("height", 100)
+        .attr("width", columns * multipleWidthWithMargin)
+        .attr("height", Math.ceil(sortedData.length / columns) * multipleHeightWithMargin + margin.top); // Reserve space at the top
+
+    // Create a container for each group (each letter group)
+    const multiples = svg.selectAll(".multiple")
+        .data(sortedData)
+        .enter()
         .append("g")
-            .attr("transform", `translate(${margin.left},${margin.top})`);
-
-        // Set up the slider
-
-    const slider_width = width/2
-    const minYear = timePoints[0].getFullYear(); // Get the minimum year
-    const maxYear = timePoints[timePoints.length -1].getFullYear(); // Get the minimum year
-    // Create the slider group
-    const sliderGroup = slider_svg.append("g")
-        .attr("transform", "translate(-30,-30)"); // Adjust position
-
-    // Create a scale for the slider
-    const sliderScale = d3.scaleLinear()
-        .domain([0, timePoints.length - 1])  // Input domain
-        .range([0, slider_width]);  // Output range (subtracting padding)
-
-        // Create a line for the slider track
-    sliderGroup.append("line")
-        .attr("x1", 0)
-        .attr("x2", slider_width)
-        .attr("y1", 0)
-        .attr("y2", 0)
-        // .attr("stroke", "black")
-        .attr("stroke", "#9e9e9e") // Light grey color
-        .attr("stroke-width", 4) // Thicker line
-        .attr("stroke-linecap", "round"); // Rounded ends for a smoother look;
-
-    // Create the slider handle
-    const handle = sliderGroup.append("circle")
-        .attr("class", "handle")
-        .attr("r", 8)
-        .attr("cx", sliderScale(0))
-        .attr("cy", 0)
-        .style("fill", "steelblue")  // Change handle color
-        .style("stroke", "white")      // Outline for contrast
-        .style("stroke-width", 2)      // Outline width
-        .style("filter", "url(#shadow)"); // Optional shadow effect
-
-
-    // Create labels for the slider
-    const minLabel = sliderGroup.append("text")
-        .attr("class", "slider-label")
-        .attr("x", sliderScale(0)) // Set initial x position for minimum label
-        .attr("y", -10) // Position above the slider
-        .attr("text-anchor", "middle") // Center the label
-        .text(`Min: ${minYear}`);
-
-    const maxLabel = sliderGroup.append("text")
-        .attr("class", "slider-label")
-        .attr("x", sliderScale(timePoints.length - 1)-20) // Set initial x position for maximum label
-        .attr("y", -10) // Position above the slider
-        .attr("text-anchor", "middle") // Center the label
-        .text(`Max: ${maxYear}`);
-
-    const currentValueLabel = sliderGroup.append("text")
-        .attr("class", "current-value-label")
-        .attr("x", sliderScale(0)) // Initial position for current value label
-        .attr("y", 25) // Position below the slider
-        .attr("text-anchor", "axisLeft") // Center the label
-        .text("Current Value");
-
-    // Initialize slider
-    updateSlider(currentSliderValue); // Set initial value
-
-
-    // Function to update the handle and display current value
-    function updateSlider(value) {
-        handle.attr("cx", sliderScale(value));  // Move the handle
-        currentValueLabel.text(`Current Time Point: ${timePoints[value].getFullYear()}`); // Update current value label
-        drawHeatmap(timePoints[value]);
-    }
-
-    // Slider event for dragging and moving
-    function onSliderMove(event) {
-        const mouseX = d3.pointer(event)[0];  // Get mouse position
-        const value = Math.round(sliderScale.invert(mouseX));  // Invert the scale to get value
-        if (value >= 0 && value < timePoints.length) {  // Check bounds
-            updateSlider(value);
-        }
-    }
-
-    // Define the drag behavior
-    const dragHandler = d3.drag()
-        .on("start", function(event) {
-            d3.select(this).raise().classed("active", true); // Bring the handle to the front
-        })
-        .on("drag", function(event) {
-            const mouseX = event.x; // Get the current mouse position
-            const value = Math.round(sliderScale.invert(mouseX)); // Get the value from the scale
-            currentSliderValue = value;
-            if (value >= 0 && value < timePoints.length) { // Ensure the value is within bounds
-                updateSlider(value); // Update the slider
-            }
-        })
-        .on("end", function() {
-            d3.select(this).classed("active", false); // Remove active class on drag end
+        .attr("class", "multiple")
+        .attr("transform", (d, i) => {
+            const col = i % columns;
+            const row = Math.floor(i / columns);
+            return `translate(${col * multipleWidthWithMargin},${row * multipleHeightWithMargin + margin.top})`;
         });
 
-    // Apply the drag behavior to the handle
-    handle.call(dragHandler);
+    // Create heatmaps within each multiple
+    multiples.each(function([groupLetter, groupData]) {
+        const group = d3.select(this);
 
-    // Initialize slider
-    updateSlider(0);  // Set initial value
+        // Get unique row and column labels
+        const rowLabels = Array.from(new Set(groupData.map(d => d.rowLabel)));
+        const colLabels = Array.from(new Set(groupData.map(d => d.colLabel)));
 
+        const x = d3.scaleBand().domain(colLabels).range([0, multipleWidth]).padding(0.01);
+        const y = d3.scaleBand().domain(rowLabels).range([0, multipleHeight]).padding(0.01);
+
+        const colorScale = d3.scaleLinear()
+            .domain([2, 0])
+            .range(["#285391", "#e36360"]);
+
+        // Add group title (group by the first letter of the country)
+        group.append("text")
+            .attr("x", multipleWidth / 2)
+            .attr("y", -margin.top / 2) // Position title above the heatmap
+            .attr("text-anchor", "middle")
+            .style("font-size", "16px")
+            .text(groupLetter); // Title will be the first letter of the country
+
+        // Draw squares for the heatmap
+        group.selectAll("rect")
+            .data(groupData)
+            .enter()
+            .append("rect")
+            .attr("x", d => x(d.colLabel))
+            .attr("y", d => y(d.rowLabel))
+            .attr("width", x.bandwidth())
+            .attr("height", y.bandwidth())
+            .style("fill", d => colorScale(d.value))
+            .style("stroke", "black")
+            .on("mouseover", (event, d) => {
+                let tooltipContent;
+
+                // Check if indicators are not null or undefined and have values
+                if (d.value == 2) {
+                    tooltipContent = `Indicator: ${d.colLabel}<br>Country: ${d.rowLabel}<br>Year: ${parseInt(d3.timeFormat("%Y")(d.time)) + 1}`;
+                } else {
+                    tooltipContent = `Indicator: ${d.colLabel}<br>Country: ${d.rowLabel}`;
+                }
+
+                tooltip
+                    .style("visibility", "visible")
+                    .html(tooltipContent)
+                    .style("top", `${event.pageY}px`)
+                    .style("left", `${event.pageX}px`);
+            })
+            .on("mousemove", (event) => {
+                tooltip
+                    .style("top", `${event.pageY + 10}px`)
+                    .style("left", `${event.pageX + 10}px`);
+            })
+            .on("mouseout", () => {
+                tooltip.style("visibility", "hidden");
+            });
+    });
+}
 
 }

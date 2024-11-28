@@ -1,3 +1,5 @@
+import { colormap as color } from './colormap.js';
+
 // Load the CSV data
 d3.csv('APT_data.csv').then(data => {
     // Convert date strings to Date objects
@@ -26,7 +28,6 @@ d3.csv('APT_data.csv').then(data => {
         }
     });
 
-    // Prepare the time series data array with cumulative counts
     // Prepare the time series data array with cumulative counts
     const timeSeriesData = [];
     const lastCounts = {}; // Object to track the last count for each key
@@ -58,10 +59,10 @@ d3.csv('APT_data.csv').then(data => {
     // Filter the data to only include dates from 1984 onward
     const filteredTimeSeriesData = timeSeriesData.filter(d => d.time >= startDate);
 
-    chart(filteredTimeSeriesData)
+    stackedChart(filteredTimeSeriesData)
 });
 
-function chart(timeSeriesData){
+function stackedChart(timeSeriesData){
   // Specify the chart’s dimensions.
   const width = 928;
   const height = 500;
@@ -81,7 +82,7 @@ function chart(timeSeriesData){
   // Prepare nested data for stacking
   const nestedData = d3.groups(timeSeriesData, d => d.time);
   
-  keys_ordered = [...new Set(timeSeriesData.map(d => d.key))]
+  let keys_ordered = [...new Set(timeSeriesData.map(d => d.key))]
 
   const series = d3.stack()
       .keys(d3.shuffle(keys_ordered))
@@ -99,9 +100,11 @@ function chart(timeSeriesData){
       .domain([0, d3.max(series, s => d3.max(s, d => d[1]))]) // Set Y domain to max value
       .rangeRound([height - marginBottom, marginTop]);
 
-  const color = d3.scaleOrdinal()
-      .domain(series.map(d => d.key))
-      .range(d3.schemeTableau10);
+  // const color = d3.scaleOrdinal()
+  //     .domain(series.map(d => d.key))
+  //     .range(d3.schemeTableau10);
+
+  console.log("COLOR", series.map(d => d.key));
 
   // Construct an area shape.
   const area = d3.area()
@@ -138,7 +141,6 @@ function chart(timeSeriesData){
       .call(d3.axisBottom(x).tickSizeOuter(0))
       .call(g => g.select(".domain").remove());
 
-    console.log("series", series)
 
   // Append a path for each series.
   svg.append("g")

@@ -1,9 +1,11 @@
 Join us for Shaggerday and Balboa Brunch!
 
 Shaggerday at the Dragon House
-Balboa Brunch at ~~flower~~ House (I forgot the name, I'll fix this) 
 
-Don't know the addresses, don't worry!  Message or talk to Brian, Ryn, Josh, or Emma in person or send an email to lizardsinscarves@gmail.com or text at 6266105329
+Balboa Brunch at Bloom House
+
+Don't know the addresses, don't worry!  Message or talk to Brian, Ryn, Josh, or Emma in person or fill out this form: [google form link](https://forms.gle/7ip7BvShTwtHRH7c6) 
+
 
 # Shaggerday
 
@@ -18,7 +20,7 @@ Feel free to come to whatever part of it makes sense to you!
 
 # Balboa Brunch
 
-Sunday, January 4th, ~~flower~~ House
+Sunday, January 4th, Bloom House
 
 Our lovely afternoon practice returns in the new year! Join us from 12pm - around 3pm (or later) to practice your balboa!  No formal lesson, but folks are generally happy to work on things!
 

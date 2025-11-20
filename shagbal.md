@@ -37,7 +37,7 @@ Folks will often bring food to share, details and theme to be announced. This to
 # What to expect
 We work to create a warm and welcoming environment to practice dance! Expect to ask people to dance and to be asked to dance. Feel free to say no at any time and for any reason. 
 
-Check out [[https://santafebalboa.org/code-of-conduct/]] for more details on our scene's code of conduct and dance ettiquette.
+Check out (Santa Fe Swing Code of Conduct)[https://santafebalboa.org/code-of-conduct/] for more details on our scene's code of conduct and dance ettiquette.
 
 This is a less formal environment than a dance hall, so it is more open to what you want out of it!  Generally, you can find people who just want to dance, people who want to work out some moves, people who will talk to you about dance theory (and lots of other theories), and people who would love to just hang out and watch and talk!
 

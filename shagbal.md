@@ -24,7 +24,7 @@ Sunday, January 4th, Bloom House
 
 Our lovely afternoon practice returns in the new year! Join us from 12pm - around 3pm (or later) to practice your balboa!  No formal lesson, but folks are generally happy to work on things!
 
-Folks will often bring food to share, details and theme to be announced. This too is informal, and please don't feel obligated, bring food if it makes you happy, eat food if it makes you happy, dance if it makes you happy
+Folks will often bring food to share, details and theme to be announced. This is informal, and please don't feel obligated to bring anything. Bring food if it makes you happy, eat food if it makes you happy, dance if it makes you happy
 
 
 # What to bring

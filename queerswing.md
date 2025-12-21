@@ -3,9 +3,7 @@ layout: no-header
 title: ""
 ---
 
-# <span style="background:linear-gradient(90deg,red,orange,yellow,green,blue,violet);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">
-Queer Swing
-</span>
+# <span style="background:linear-gradient(90deg,red,orange,yellow,green,blue,violet);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">Queer Swing</span>
 
 # Location
 

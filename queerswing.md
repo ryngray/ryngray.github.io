@@ -1,3 +1,8 @@
+---
+layout: no-header
+title: ""
+---
+
 # Queer Swing
 
 This page is under construction!  Expect more information on the lesson and format soon!

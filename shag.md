@@ -2,7 +2,7 @@
 layout: no-header
 ---
 
-#Shaggerday
+# Shaggerday
 
 Join us for Shaggerday!
 
@@ -21,11 +21,11 @@ Open dancing from 1-3pm or as long as people are around
 
 Music will be good for shag, lindy, or bal, but will focus on shaggable music 
 
-Feel free to come to whatever part of it makes sense to you!
+Feel free to come to just the lesson, just the dancing, or both!
 
 # What to bring
 
-* dance shoes (we want to keep people's dance floors nice and clean!)
+* dance shoes, or CLEAN shoes with slidey soles (we want to keep our dance floor nice and clean!)
 * water bottle (although cups will be available at the homes if you forget)
 * snack to share (if you want and it sounds fun!)
 
@@ -36,7 +36,7 @@ Check out [Santa Fe Swing Code of Conduct](https://santafebalboa.org/code-of-con
 
 This is a less formal environment than a dance hall, so it is more open to what you want out of it!  Generally, you can find people who just want to dance, people who want to work out some moves, people who will talk to you about dance theory (and lots of other theories), and people who would love to just hang out and watch and talk!
 
-Please don't hesitate to reach out to me (Ryn) or any of the other folks with any questions!  (see contact info at top)
+Please don't hesitate to reach out to me (Ryn) or any of the other folks with any questions!  ryngray1@gmail.com
 
 
 

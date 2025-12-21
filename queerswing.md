@@ -3,9 +3,17 @@ layout: no-header
 title: ""
 ---
 
-# Queer Swing
+# <span style="background:linear-gradient(90deg,red,orange,yellow,green,blue,violet);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">
+Queer Swing
+</span>
 
-This page is under construction!  Expect more information on the lesson and format soon!
+# Location
+
+The Hut
+
+# Lessons
+
+Lindy Switch Lesson: 6:30
 
 # Dance
 

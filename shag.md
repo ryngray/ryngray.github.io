@@ -2,22 +2,24 @@
 layout: no-header
 ---
 
+#Shaggerday
 
 Join us for Shaggerday!
 
-Shaggerday at the Dragon House
-
+Saturday, January 3rd, Dragon House
 
 Don't know the addresses, don't worry!  Message or talk to Brian or Ryn in person or fill out this form: [google form link](https://forms.gle/7ip7BvShTwtHRH7c6) 
-
-
-# Shaggerday
-
-Saturday, January 3rd, Dragon House
+# Lessons
 
 We will have a shag lesson 12-1pm.  This will be an introductory lesson to get you going!  
 
-Open dancing from 1-3pm or as long as people are around 
+Lesson will be taught by Emily and Wyllow (ABQ/Santa Fe) 
+
+# Dance
+
+Open dancing from 1-3pm or as long as people are around
+
+Music will be good for shag, lindy, or bal, but will focus on shaggable music 
 
 Feel free to come to whatever part of it makes sense to you!
 
@@ -25,7 +27,7 @@ Feel free to come to whatever part of it makes sense to you!
 
 * dance shoes (we want to keep people's dance floors nice and clean!)
 * water bottle (although cups will be available at the homes if you forget)
-
+* snack to share (if you want and it sounds fun!)
 
 # What to expect
 We work to create a warm and welcoming environment to practice dance! Expect to ask people to dance and to be asked to dance. Feel free to say no at any time and for any reason. 

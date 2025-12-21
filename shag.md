@@ -1,3 +1,8 @@
+---
+layout: no-header
+---
+
+
 Join us for Shaggerday!
 
 Shaggerday at the Dragon House

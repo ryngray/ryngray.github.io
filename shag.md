@@ -9,6 +9,8 @@ Join us for Shaggerday!
 Saturday, January 3rd, Dragon House, Santa Fe NM
 
 Don't know the addresses, don't worry!  Message or talk to Brian or Ryn in person or fill out this form: [google form link](https://forms.gle/7ip7BvShTwtHRH7c6) 
+We will be accepting donations for the instructors' time!
+
 # Lessons
 
 We will have Collegiate Shag lesson 12-1pm.  This will be an introductory lesson to get you going!  

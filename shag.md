@@ -6,20 +6,23 @@ layout: no-header
 
 Join us for Shaggerday!
 
-Saturday, January 3rd, Dragon House, Santa Fe NM
+Saturday, January 3rd, Dragon House, Santa Fe NM, Lesson: Wyllow and Emily
+Saturday, February 7th, 222 Truman, 2-4 pm, Lesson: TBD
+Saturday, March 7, Dragon House, 12-3pm, Lesosn: TBD
 
-Don't know the addresses, don't worry!  Message or talk to Brian or Ryn in person or fill out this form: [google form link](https://forms.gle/7ip7BvShTwtHRH7c6) 
+
+Don't know the address for Dragon House? Don't worry!  Message or talk to Brian or Ryn in person or fill out this form: [google form link](https://forms.gle/7ip7BvShTwtHRH7c6) 
 We will be accepting donations for the instructors' time!
 
 # Lessons
 
-We will have Collegiate Shag lesson 12-1pm.  This will be an introductory lesson to get you going!  
+We will have Collegiate Shag lesson 12-1pm for Santa Fe months an 2-3pm for ABQ months.  These will be an introductory lesson to get you going!  
 
-Lesson will be taught by Emily and Wyllow (ABQ/Santa Fe) 
+Lesson will be taught by some combo of Emily, Wyllow, Ryn, and Grady! 
 
 # Dance
 
-Open dancing from 1-3pm or as long as people are around
+Open dancing will be after the lesson for as long as people are around
 
 Music will be good for shag, lindy, or bal, but will focus on shaggable music 
 

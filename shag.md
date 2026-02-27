@@ -14,7 +14,7 @@ Saturday, January 3rd, Dragon House, Santa Fe NM, Lesson: Wyllow and Emily
 Saturday, February 7th, 222 Truman, 2-4 pm, Lesson: TBD
 
 
-Saturday, March 7, Dragon House, 12-3pm, Lesosn: TBD
+Saturday, March 14, Dragon House, 12-3pm, Lesosn: TBD
 
 
 Don't know the address for Dragon House? Don't worry!  Message or talk to Brian or Ryn in person or fill out this form: [google form link](https://forms.gle/7ip7BvShTwtHRH7c6) 

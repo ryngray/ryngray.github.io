@@ -20,7 +20,7 @@ The month of May, intermediate lessons at 222 Truman will be focusing on Shag! B
 
 Brian and Ryn are teaching Shag at [Swingco De Mayo](https://www.facebook.com/events/845542227833732/) 
 
-Fast Foot Fried Chicken Friday at the Dragon House, May 22nd. More info [Fast Foot](ryngray.github.io/fastfoot)
+Fast Foot Fried Chicken Friday at the Dragon House, May 22nd. More info [Fast Foot](https://ryngray.github.io/fastfoot)
 
 SAVE THE DATE!  Jeremy Otth and Sarah Stembridge are teaching shag at 222 Truman, Sunday, May 30th, 11-3pm
 
@@ -43,11 +43,11 @@ We will be accepting donations for the instructors' time!
 
 # Lessons
 
-We will have Collegiate Shag lesson 12-1pm for Santa Fe months an 2-3pm for ABQ months.  These will be an introductory lesson to get you going!  
+We will have Collegiate Shag lesson 2-3pm.  These will be an introductory lesson to get you going!  
 
-Lesson will be taught by some combo of Emily, Wyllow, Ryn, and Grady! 
+Lesson will be taught by some combo of Emily, Wyllow, Ryn, Brian, and Grady! 
 
-We will be accepting donations to compensate instructors!
+We will be accepting donations to compensate instructors and pay for locations!
 
 # Dance
 

@@ -8,6 +8,27 @@ Join us for Shaggerday!
 
 ## Schedule
 
+### Upcoming Shaggerdays
+
+Saturday, April 18, 222 Truman ABQ, 2-4 pm
+
+Saturday, May 9, Dragon House Santa Fe, 2-4pm
+
+### Other Events
+
+The month of May, intermediate lessons at 222 Truman will be focusing on Shag! Be there to prep for all the awesome May shag events!
+
+Brian and Ryn are teaching Shag at [Swingco De Mayo](https://www.facebook.com/events/845542227833732/) 
+
+Fast Foot Fried Chicken Friday at the Dragon House, May 22nd. More info [Fast Foot](ryngray.github.io/fastfoot)
+
+SAVE THE DATE!  Jeremy Otth and Sarah Stembridge are teaching shag at 222 Truman, Sunday, May 30th, 11-3pm
+
+Several of us are going to Shag Summer Camp in California, July 10-12.  We'd love for you to join us!  More info here: [shag summer camp](https://atomicballroom.com/shagsummercamp/)
+ 
+
+### Past Shaggerdays
+
 Saturday, January 3rd, Dragon House, Santa Fe NM, Lesson: Wyllow and Emily
 
 

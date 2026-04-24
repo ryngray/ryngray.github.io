@@ -12,7 +12,6 @@ You can contact the Jelly Roles at thejellyroles@gmail.com
 
 The Jelly Roles are running the Switch-a-room at Camp Hollywood.  We will have a showcase (the Switch-a-roo) 7pm - 8pm where people will be able to show off their switch dancing and then open role dancing from 8pm - 1am.
 
-Ryn currently is president of the [Arizona Swing Cats](arizonaswingcats.com).  Arizona Swing Cats have lessons every Wednesday as well as social dances the 2nd Saturday and 3rd Sunday of every month.  Find them on Facebook and Instagram at AZSwingCats.
 
 ## Dance Geneology Project
 

@@ -1,9 +1,7 @@
 # Lessons
 
-Ryn currently teaches lessons with the Arizona Swing Cats.  You can find their lessons every Wednesdays from 6-7pm and 7-8pm on UA campus, Cesar E. Chavez room 104.  
+Ryn is open to teaching private lessons in switch dancing, Lindy Hop, Shag, and Vernacular Jazz.
 
-Ryn sometimes teaches at Jittercat Jive, which happen at Movement Culture every Second Saturday.
+If you are interested in lessons please reach out to us at ryngray1@gmail.com
 
-If you are interested in lessons please reach out to us at thejellyroles@gmail.com
-
-Ryn has taught lessons at the Tucson Swing Festival and various other locations around Tucson.
+Ryn has taught lessons at Swingco De Mayo, the Tucson Swing Festival, Arizona Swing Cats weekly lessons, Monday night dances in Santa Fe, and Tuesday night dances in Albuquerque, to name a few.
